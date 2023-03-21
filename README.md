@@ -6,8 +6,8 @@ Since i use GNU/linux based system based on Debian distribution for developement
 
 Available Tools and Programming Languages:
 
-Programming language: Go
-Tools: apt update, Nginx
+Programming language: go, python
+Tools: apt update, man(Manual pages), Nginx
 
 Commands availbale:
 
@@ -15,4 +15,6 @@ Syntax: Make <command>
 
 1) No coomand	: Setups all the software and tools without discrimination.
 2) All		: Same as above
-3) go		: Dounloads and set's up go environment
+3) setup	: apt update
+4) tools	: intalls tools like man, build-essentials.
+5) go		: Dounloads and set's up go environment

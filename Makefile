@@ -1,9 +1,11 @@
-all : setup go
-.phony : all setup go
+all : setup go tools
+.phony : all setup go tools
 
 setup :
 	sudo apt update;
-	sudo apt install man -y;
+
+tools:
+	sudo apt install man build-essential -y;
 
 go :
 	wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz;
