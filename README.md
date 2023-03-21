@@ -6,8 +6,8 @@ Since i use GNU/linux based system based on Debian distribution for developement
 
 Available Tools and Programming Languages:
 
-Programming language: go, python
-Tools: apt update, man(Manual pages), Nginx
+Programming language: go,
+Tools: apt update, man(manual pages), build-essentials, nginx
 
 Commands availbale:
 
@@ -17,4 +17,5 @@ Syntax: Make <command>
 2) All		: Same as above
 3) setup	: apt update
 4) tools	: intalls tools like man, build-essentials.
-5) go		: Dounloads and set's up go environment
+5) go		: Dounloads and set's up go programming language
+6) nginx	: Downloads and set' up nginx
