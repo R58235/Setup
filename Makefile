@@ -5,7 +5,7 @@ setup :
 	sudo apt update;
 
 tools:
-	sudo apt install man build-essential -y;
+	sudo apt install man build-essential net-tools netcat -y;
 
 go :
 	wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz;

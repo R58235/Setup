@@ -16,6 +16,6 @@ Syntax: Make <command>
 1) No coomand	: Setups all the software and tools without discrimination.
 2) All		: Same as above
 3) setup	: apt update
-4) tools	: intalls tools like man, build-essentials.
+4) tools	: intalls tools like man, build-essentials, net-tools, netcat.
 5) go		: Dounloads and set's up go programming language
 6) nginx	: Downloads and set' up nginx
