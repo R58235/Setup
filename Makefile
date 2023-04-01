@@ -1,11 +1,17 @@
+doc : 
+	cat README.md;
+
 all : setup tools go nginx
 .phony : all setup tools go nginx
 
 setup :
 	sudo apt update;
 
-tools:
-	sudo apt install man build-essential net-tools netcat -y;
+tools :
+	sudo apt install man net-tools netcat -y;
+
+gcc :
+	sudo apt install build-essential -y;
 
 go :
 	wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz;
