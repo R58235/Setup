@@ -16,6 +16,35 @@ gcc :
 git: 
 	sudo apt-get install git -y;
 
+cmake: 
+	cd && wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3.tar.gz;
+	sudo rm -rf /usr/local/cmake && sudo tar -C /usr/local -xzf cmake-3.26.3.tar.gz;
+	cd /usr/local/cmake-3.26.3;
+	sudo ./bootstrap && sudo make && sudo make install;
+	cd && rm cmake-3.26.3.tar.gz;
+
+cJSON:  cmake	
+	cd /usr/local && sudo git clone https://github.com/DaveGamble/cJSON.git;
+	cd /usr/local/cJSON;
+	mkdir build;
+	cd build;
+	sudo cmake ..;
+	sudo make;
+	sudo make install;
+
+jsoncpp:
+	sudo apt install libjsoncpp-dev;
+
+uuid:
+	sudo apt install uuid-dev;
+
+openSSL:
+	sudo apt install openssl;
+	sudo apt install libssl-dev;
+
+zlib:
+	sudo apt install zlib1g-dev;
+
 go :
 	cd && wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz;
 	sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz;
@@ -42,18 +71,8 @@ nginx:
 	sudo apt install nginx;
 	sudo nginx -v;
 
-cmake: 
-	cd && wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3.tar.gz;
-	sudo rm -rf /usr/local/cmake && sudo tar -C /usr/local -xzf cmake-3.26.3.tar.gz;
-	cd /usr/local/cmake-3.26.3;
-	sudo ./bootstrap && sudo make && sudo make install;
-	cd && rm cmake-3.26.3.tar.gz;
+sqlite3:
+	sudo apt-get install libsqlite3-dev;
 
-cJSON:  cmake	
-	cd /usr/local && sudo git clone https://github.com/DaveGamble/cJSON.git;
-	cd /usr/local/cJSON;
-	mkdir build;
-	cd build;
-	sudo cmake ..;
-	sudo make;
-	sudo make install;
+redis:
+	sudo apt-get install libhiredis-dev;
