@@ -79,3 +79,9 @@ sqlite3:
 
 redis:
 	sudo apt-get install libhiredis-dev;
+
+read: 
+	echo "Enter";\
+		read dir_path;\
+	echo $$dir_path;\
+	cd $$dir_path;
