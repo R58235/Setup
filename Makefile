@@ -71,6 +71,9 @@ nginx:
 	sudo apt install nginx;
 	sudo nginx -v;
 
+postgresql:
+	sudo apt-get install postgresql -y;
+
 sqlite3:
 	sudo apt-get install libsqlite3-dev;
 
