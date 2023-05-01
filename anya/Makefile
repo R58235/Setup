@@ -23,7 +23,9 @@ database:
 	sudo apt-get install libhiredis-dev;
 
 install-drogon: env-setup extras database
-	cd /usr/local/;\
+	echo "Enter the project include path directory"; \
+	read dir_path; \
+	cd $dir_path;\
 	sudo git clone https://github.com/drogonframework/drogon;\
 	cd drogon;\
 	sudo git clone https://github.com/an-tao/trantor.git; \
