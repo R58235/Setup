@@ -1,7 +1,7 @@
 null :
 	echo "Please provide some command"
 
-.phony : env-setup extras database install-drogon
+.phony : env-setup extras database install-drogon postgres
 
 env-setup :
 	sudo apt install git -y;
@@ -18,18 +18,24 @@ extras :
 	sudo apt install zlib1g-dev;
 
 database:
-	sudo apt-get install postgresql-all;
 	sudo apt-get install libsqlite3-dev;
 	sudo apt-get install libhiredis-dev;
 
-install-drogon: env-setup extras database
-	echo "Enter the project include path directory(start from base dir)"; \
-	read dir_path; \
-	cd $$dir_path;\
+postgres:
+	sudo apt-get install lsb-release;\
+	sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'\
+	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - \
+	sudo apt-get update\
+	sudo apt-get -y install postgresql;
+	sudo apt-get install postgresql-server-dev-all -y;
+
+
+install-drogon: env-setup extras database postgres
+	cd /usr/local;\
 	sudo git clone https://github.com/drogonframework/drogon;\
 	cd drogon;\
 	sudo git clone https://github.com/an-tao/trantor.git; \
-	git submodule update --init;\
+	sudo git submodule update --init;\
 	sudo mkdir build;\
 	cd build;\
 	sudo cmake ..;\

@@ -1,19 +1,15 @@
 doc : 
 	cat README.md;
 
-all : setup tools go nginx
-.phony : all setup tools go nginx
+.phony : all setup essentials cmake cJSON jsoncpp uuid openSSL zlib go nginx postgres sqlite3 redis 
 
 setup :
 	cd && sudo apt update;
 
-tools :
+essentials:
 	sudo apt install man net-tools netcat -y;
-
-gcc :
-	sudo apt install build-essential -y;
-
-git: 
+	sudo apt install gcc -y;
+	sudo apt install g++ -y 
 	sudo apt-get install git -y;
 
 cmake: 
@@ -25,7 +21,7 @@ cmake:
 
 cJSON:  cmake	
 	cd /usr/local && sudo git clone https://github.com/DaveGamble/cJSON.git;
-	cd /usr/local/cJSON;
+	cd /usr/local/cJSON; 
 	mkdir build;
 	cd build;
 	sudo cmake ..;
@@ -71,8 +67,13 @@ nginx:
 	sudo apt install nginx;
 	sudo nginx -v;
 
-postgresql:
-	sudo apt-get install postgresql -y;
+postgres:
+	sudo apt-get install lsb-release;\
+	sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list';\
+	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - \
+	sudo apt-get update; \
+	sudo apt-get -y install postgresql; \
+	sudo apt-get install postgresql-all;
 
 sqlite3:
 	sudo apt-get install libsqlite3-dev;
