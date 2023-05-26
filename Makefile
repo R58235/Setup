@@ -1,19 +1,15 @@
 doc : 
 	cat README.md;
 
-all : setup tools go nginx
-.phony : all setup tools go nginx
+.phony : all setup essentials cmake cJSON jsoncpp uuid openSSL zlib go nginx postgres sqlite3 redis 
 
 setup :
 	cd && sudo apt update;
 
-tools :
+essentials:
 	sudo apt install man net-tools netcat -y;
-
-gcc :
-	sudo apt install build-essential -y;
-
-git: 
+	sudo apt install gcc -y;
+	sudo apt install g++ -y 
 	sudo apt-get install git -y;
 
 cmake: 
@@ -25,7 +21,7 @@ cmake:
 
 cJSON:  cmake	
 	cd /usr/local && sudo git clone https://github.com/DaveGamble/cJSON.git;
-	cd /usr/local/cJSON;
+	cd /usr/local/cJSON; 
 	mkdir build;
 	cd build;
 	sudo cmake ..;
@@ -46,9 +42,9 @@ zlib:
 	sudo apt install zlib1g-dev;
 
 go :
-	cd && wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz;
-	sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz;
-	export PATH=$$PATH:/usr/local/go/bin;
+	cd && wget https://go.dev/dl/go1.20.4.linux-amd64.tar.gz; \
+	sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz; \
+	export PATH=$$PATH:/usr/local/go/bin; \
 	go version;
 	read -p "State your Username for working directory creation:" username; \
         read -p "State your Github Username for repository directory creation:" g_username; \
@@ -71,8 +67,22 @@ nginx:
 	sudo apt install nginx;
 	sudo nginx -v;
 
+postgres:
+	sudo apt-get install lsb-release;\
+	sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list';\
+	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - \
+	sudo apt-get update; \
+	sudo apt-get -y install postgresql; \
+	sudo apt-get install postgresql-all;
+
 sqlite3:
 	sudo apt-get install libsqlite3-dev;
 
 redis:
 	sudo apt-get install libhiredis-dev;
+
+read: 
+	echo "Enter";\
+		read dir_path;\
+	echo $$dir_path;\
+	cd $$dir_path;
