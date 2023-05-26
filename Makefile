@@ -86,3 +86,15 @@ read:
 		read dir_path;\
 	echo $$dir_path;\
 	cd $$dir_path;
+
+doxygen :
+	cd;
+	sudo apt install flex -y;
+	sudo apt install bison -y;
+	cd /usr/local; \
+	sudo git clone https://github.com/doxygen/doxygen.git; \
+	cd doxygen; \
+	sudo mkdir build; \
+	cd build; \
+	cmake -G "Unix Makefiles" .. \
+	sudo make && sudo make install;

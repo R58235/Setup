@@ -1,7 +1,7 @@
 null :
 	echo "Please provide some command"
 
-.phony : env-setup extras database install-drogon postgres
+.phony : env-setup extras database install-drogon postgres doxygen
 
 env-setup :
 	sudo apt install git -y;
@@ -29,8 +29,20 @@ postgres:
 	sudo apt-get -y install postgresql;
 	sudo apt-get install postgresql-server-dev-all -y;
 
-
-install-drogon: env-setup extras database postgres
+doxygen :
+	cd;
+	sudo apt install flex -y;
+	sudo apt install bison -y;
+	cd /usr/local; \
+	sudo git clone https://github.com/doxygen/doxygen.git; \
+	cd doxygen; \
+	sudo mkdir build; \
+	cd build; \
+	cmake -G "Unix Makefiles" .. \
+	sudo make; \ 
+	sudo make install;
+	 
+install-drogon: env-setup extras database postgres doxygen
 	cd /usr/local;\
 	sudo git clone https://github.com/drogonframework/drogon;\
 	cd drogon;\
