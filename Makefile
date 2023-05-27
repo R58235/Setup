@@ -69,11 +69,12 @@ nginx:
 
 postgres:
 	sudo apt-get install lsb-release;\
+	sudo apt-get install gnupg;
 	sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list';\
-	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - \
-	sudo apt-get update; \
-	sudo apt-get -y install postgresql; \
-	sudo apt-get install postgresql-all;
+	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - ;\
+	sudo apt-get update;\
+	sudo apt-get -y install postgresql;;
+	sudo apt-get install postgresql-server-dev-all -y;
 
 sqlite3:
 	sudo apt-get install libsqlite3-dev;
@@ -96,5 +97,5 @@ doxygen :
 	cd doxygen; \
 	sudo mkdir build; \
 	cd build; \
-	cmake -G "Unix Makefiles" .. \
+	sudo cmake -G "Unix Makefiles" .. ;\
 	sudo make && sudo make install;
