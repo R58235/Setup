@@ -13,10 +13,10 @@ essentials:
 	sudo apt-get install git -y;
 
 cmake: 
-	cd && wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3.tar.gz;
-	sudo rm -rf /usr/local/cmake && sudo tar -C /usr/local -xzf cmake-3.26.3.tar.gz;
-	cd /usr/local/cmake-3.26.3;
-	sudo ./bootstrap && sudo make && sudo make install;
+	cd && wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3.tar.gz; \
+	sudo rm -rf /usr/local/cmake && sudo tar -C /usr/local -xzf cmake-3.26.3.tar.gz; \
+	cd /usr/local/cmake-3.26.3; \
+	sudo ./bootstrap && sudo make && sudo make install; \
 	cd && rm cmake-3.26.3.tar.gz;
 
 cJSON:  cmake	
@@ -73,7 +73,7 @@ postgres:
 	sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list';\
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - ;\
 	sudo apt-get update;\
-	sudo apt-get -y install postgresql;;
+	sudo apt-get -y install postgresql; \
 	sudo apt-get install postgresql-server-dev-all -y;
 
 sqlite3:
